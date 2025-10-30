@@ -6,7 +6,7 @@ import 'dart:convert';
 import 'package:provider/provider.dart';
 
 //This is where we will fetch some sample JSON (have a look at it please)
-final String postURL = "https://jsonplaceholder.typicode.com/posts";
+// final String postURL = "https://jsonplaceholder.typicode.com/posts";
 
 // 2) ADD your JItem class below (we'll do in class or grab from 10b notes)
 class JItem {
@@ -117,19 +117,3 @@ class _DemoPageState extends State<DemoPage> {
   }
 }
 
-//4) Create the getData Function here!
-Future<List<JItem>> getData() async {
-  List<JItem> posts = [];
-
-  var response = await http.get(Uri.parse(postURL));
-
-  if (response.statusCode == 200) {
-    var data = json.decode(response.body);
-
-    for (var item in data) {
-      posts.add(JItem(id: item['id'], title: item['title']));
-    }
-  }
-
-  return posts;
-}
